@@ -37,9 +37,10 @@ printf("    9. Good luck!\n");}
 // Clear Screen function clears the screen 
 void clearScreen() 
 {
-    printf("Hit <ENTER> to continue! ")
+    char character;
+    printf("Hit <ENTER> to continue! ");
     scanf("%c", &character);
-    getchar() // wait for the character to be received
+    getchar();// wait for the character to be received
     system("cls"); // clear the screen
 }
 
@@ -65,7 +66,9 @@ void displayExplicitBoard(){
 
 
 // prints the new boggle board with randomized characters for 4x4 boggle board
-void displayBoard() {
+void displayBoard(char board[ROWS][COLS]) {
+    int row;
+    int col;
     printf("|---------------------------------------------------|\n");
     printf("|                   BOGGLE BOARD                    |\n");
     printf("|---------------------------------------------------|\n");
@@ -80,5 +83,51 @@ void displayBoard() {
         }
         printf("|\n");
         printf("|---------------------------------------------------|\n");
+    }
+}
+
+
+void displayDice(char dice[DICE][SIDES])
+{
+    int row;
+    int col;
+    for (row = 0; row < ROWS; row++)
+    {
+        for (col = 0; col < COLS; col++)
+        {
+            printf("%c", dice[row][col]);
+        }
+    }
+}
+
+
+
+char getLetter(char dice[DICE][SIDES], int row)
+{   
+    int col;
+    char letter;
+    col = rand() % SIDES;
+    letter = dice[row][col];
+    return letter;
+}
+
+
+void createBoard(char dice[DICE][SIDES], char board[ROWS][COLS], int usedDie[DICE])
+{
+    int i;
+    for (row = 0; row < ROWS; row++)
+    {
+        col = 0;
+        while (col < COLS)
+        {
+            die = rand() % DICE;
+            if (die != usedDie[die])
+            {
+                letter = getLetter(dice[DICE][SIDES], die);
+                board[row][col] = letter;
+                usedDie[i] = usedDie[die];
+                col++;
+            }
+        }
     }
 }
