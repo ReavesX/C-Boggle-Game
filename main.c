@@ -13,26 +13,37 @@ Desc: This program will play the Game boggle featured here: https://en.wikipedia
 
 int main(void)
 {
-    char dice[DICE][SIDES];
+    char dice[DICE][SIDES] = {
+     {'R', 'I', 'F', 'O', 'B', 'X'},
+     {'I', 'F', 'E', 'H', 'E', 'Y'},
+     {'D', 'E', 'N', 'O', 'W', 'S'},
+     {'U', 'T', 'O', 'K', 'N', 'D'},
+     {'H', 'M', 'S', 'R', 'A', 'O'},
+     {'L', 'U', 'P', 'E', 'T', 'S'},
+     {'A', 'C', 'I', 'T', 'O', 'A'},
+     {'Y', 'L', 'G', 'K', 'U', 'E'},
+     {'Q', 'B', 'M', 'J', 'O', 'A'},
+     {'E', 'H', 'I', 'S', 'P', 'N'},
+     {'V', 'E', 'T', 'I', 'G', 'N'},
+     {'B', 'A', 'L', 'I', 'Y', 'T'},
+     {'E', 'Z', 'A', 'V', 'N', 'D'},
+     {'R', 'A', 'L', 'E', 'S', 'C'},
+     {'U', 'W', 'I', 'L', 'R', 'G'},
+     {'P', 'A', 'C', 'E', 'M', 'D'}
+    };
+
+
     char board[ROWS][COLS];
     int usedDie[DICE];
 
-
-    memset(usedDie[DICE], 0, sizeof(usedDie[DICE]));
-    memset(board[ROWS][COLS], SPACE, sizeof(board[ROWS][COLS]));
-
+    memset(usedDie, 0, sizeof(usedDie));
     srand(time(0));
     welcomeScreen();
     clearScreen();
 
-
-    /* displayExplicitBoard();
-     clearScreen(); */
-
-
-    displayDice(dice[DICE][SIDES]);
-    clearScreen();
-    createBoard(dice[DICE][SIDES], board[ROWS][COLS], usedDie[DICE]);
-    displayBoard(board[ROWS][COLS]);
+    displayExplicitBoard();
+    clearScreen(); // Clear the screen before generating the randomized board
+    createBoard(dice, board, usedDie);
+    displayBoard(board);
     return 0;
 }

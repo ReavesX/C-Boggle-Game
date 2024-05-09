@@ -41,6 +41,4 @@ void displayBoard(char board[ROWS][COLS]);
 char getLetter(char dice[DICE][SIDES], int row);
 void displayDice(char dice[DICE][SIDES]);
 
-
-
 #endif // Boggle_H Included

@@ -40,8 +40,8 @@ void clearScreen()
     char character;
     printf("Hit <ENTER> to continue! ");
     scanf("%c", &character);
-    getchar();// wait for the character to be received
-    system("cls"); // clear the screen
+    while (getchar() != '\n'); 
+    system("cls");
 }
 
 
@@ -67,30 +67,26 @@ void displayExplicitBoard(){
 
 // prints the new boggle board with randomized characters for 4x4 boggle board
 void displayBoard(char board[ROWS][COLS]) {
-    int row;
-    int col;
+    int row, col;
+
     printf("|---------------------------------------------------|\n");
     printf("|                   BOGGLE BOARD                    |\n");
     printf("|---------------------------------------------------|\n");
-   
-    for (row = 0; row < ROWS; row++) {  // for row less than 4 (ROWS) do the following
-        for (col = 0; col < COLS; col++) { // for column less than 4 do the following
-            num = rand() % LETTERS;
-            letter = 'A';  //Starting letter
-            num += letter; // random number + letter = random letter 
-            printf("|      %c     ", num); // print new random letter in posiiotn
 
+    for (row = 0; row < ROWS; row++) {
+        for (col = 0; col < COLS; col++) {
+            printf("|      %c     ", board[row][col]);
         }
         printf("|\n");
         printf("|---------------------------------------------------|\n");
     }
+    clearScreen();
 }
 
 
 void displayDice(char dice[DICE][SIDES])
 {
-    int row;
-    int col;
+    int row, col;
     for (row = 0; row < ROWS; row++)
     {
         for (col = 0; col < COLS; col++)
@@ -99,8 +95,6 @@ void displayDice(char dice[DICE][SIDES])
         }
     }
 }
-
-
 
 char getLetter(char dice[DICE][SIDES], int row)
 {   
@@ -114,18 +108,18 @@ char getLetter(char dice[DICE][SIDES], int row)
 
 void createBoard(char dice[DICE][SIDES], char board[ROWS][COLS], int usedDie[DICE])
 {
-    int i;
+    int row, col, die;
     for (row = 0; row < ROWS; row++)
     {
         col = 0;
         while (col < COLS)
         {
             die = rand() % DICE;
-            if (die != usedDie[die])
+            if (usedDie[die] == 0)
             {
-                letter = getLetter(dice[DICE][SIDES], die);
+                char letter = getLetter(dice, row);
                 board[row][col] = letter;
-                usedDie[i] = usedDie[die];
+                usedDie[die] = 1;
                 col++;
             }
         }
