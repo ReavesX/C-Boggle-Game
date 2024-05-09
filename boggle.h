@@ -10,9 +10,16 @@ Desc: This program will play the Game boggle featured here: https://en.wikipedia
 #define Boggle_H
 
 // Macro, Constant, and External variable decalrations
+#define ROWS 4  // Number of Rows
+#define COLS 4  // Number of Columns 
+#define LETTERS 26  // Number of Letters
 
 
-Externn char character;
+extern char character;
+extern int row;
+extern int col;
+extern int num;
+extern char letter;
 
 // Function Prototypes
 void welcomeScreen();

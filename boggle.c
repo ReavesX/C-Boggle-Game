@@ -61,3 +61,24 @@ void displayExplicitBoard(){
     printf("|------------------------------------------------|\n");
  
 }
+
+
+
+// prints the new boggle board with randomized characters for 4x4 boggle board
+void displayBoard() {
+    printf("|---------------------------------------------------|\n");
+    printf("|                   BOGGLE BOARD                    |\n");
+    printf("|---------------------------------------------------|\n");
+   
+    for (row = 0; row < ROWS; row++) {  // for row less than 4 (ROWS) do the following
+        for (col = 0; col < COLS; col++) { // for column less than 4 do the following
+            num = rand() % LETTERS;
+            letter = 'A';  //Starting letter
+            num += letter; // random number + letter = random letter 
+            printf("|      %c     ", num); // print new random letter in posiiotn
+
+        }
+        printf("|\n");
+        printf("|---------------------------------------------------|\n");
+    }
+}

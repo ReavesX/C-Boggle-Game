@@ -6,7 +6,7 @@ Desc: This program will play the Game boggle featured here: https://en.wikipedia
 */
 
 
-// 
+// include the following libraries
 #include <stdio.h>
 #include <stdlib.h>
 #include "boggle.h"
